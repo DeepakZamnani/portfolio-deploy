@@ -113,7 +113,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 
   .about-section {
-    background-image: url("./assets/images/bg-light.png");
+    // background-image: url("./assets/images/bg-light.png");
   }
 
   .skills-container svg {
@@ -151,5 +151,225 @@ p, a, h1, h2, h3, h4, h5, label, button {
     .items-container {
       padding: 5% 5%;
     }
+  }
+}
+// Keep your original Project.scss exactly as it is, and ADD these rules to it:
+
+// Luxury Section Styling
+.project-section {
+    margin-bottom: 100px;
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    
+    h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 20px;
+        font-family: inherit; // Uses your existing font
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-line {
+        width: 60px;
+        height: 1px;
+        background: #ffffff;
+        margin: 0 auto;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .project-section {
+        margin-bottom: 70px;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+        
+        h2 {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .section-line {
+            width: 40px;
+        }
+    }
+}
+// Main.scss - Updated for Plasma Background
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  
+  // Remove any background-image or background properties here
+  // Comment out or delete lines like:
+  // background: url('../images/bg.gif');
+  // background-size: cover;
+  
+  // Plasma background layer
+  .plasma-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  // Content layer
+  .about-section {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    
+    .image-wrapper {
+      position: relative;
+      z-index: 2;
+      
+      img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        
+        @media (max-width: 768px) {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+    
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 20px 0 10px;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        
+        @media (max-width: 768px) {
+          font-size: 2rem;
+        }
+      }
+      
+      p {
+        font-size: 1.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        
+        @media (max-width: 768px) {
+          font-size: 1.2rem;
+        }
+      }
+      
+      .social_icons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 20px;
+        
+        @media (max-width: 768px) {
+          display: none;
+        }
+        
+        a {
+          color: white;
+          transition: all 0.3s ease;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 12px;
+          border-radius: 50%;
+          backdrop-filter: blur(10px);
+          
+          &:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+          }
+          
+          svg {
+            font-size: 28px;
+          }
+        }
+      }
+      
+      .mobile_social_icons {
+        display: none;
+        
+        @media (max-width: 768px) {
+          display: flex;
+          gap: 15px;
+          justify-content: center;
+          margin-top: 20px;
+        }
+        
+        a {
+          color: white;
+          transition: all 0.3s ease;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 10px;
+          border-radius: 50%;
+          backdrop-filter: blur(10px);
+          
+          &:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+          }
+          
+          svg {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Desktop layout - side by side
+@media (min-width: 769px) {
+  .about-section {
+    flex-direction: row;
+    gap: 60px;
+    
+    .content {
+      text-align: left;
+      
+      .social_icons {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+// Mobile layout - stacked
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    gap: 30px;
   }
 }
